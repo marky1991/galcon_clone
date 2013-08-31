@@ -129,9 +129,9 @@ table.header {
     margin-right: auto;
 }
 
-//The duplication is to avoid css specificity issues (without ".children >"
-//in the second rule, .children > td beats it)
-.children td:first-child:not(.centered), .children > td.left_aligned, .left_aligned {
+/*The duplication is to avoid css specificity issues (without ".children >"
+in the second rule, .children > td beats it)*/
+.children > td:first-child, .children > td.left_aligned, .left_aligned {
     text-align: left;
 }
 

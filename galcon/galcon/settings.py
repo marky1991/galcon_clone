@@ -228,4 +228,6 @@ adminship_levels = [("none", "Member"),
                     ("superadmin", "Superadmin"),
                     ("owner", "Owner")]
 chat_history_size = 100
+#The max number of posts to show in the recent posts page
+recent_post_limit = 25
 

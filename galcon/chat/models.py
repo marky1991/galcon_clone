@@ -12,8 +12,8 @@ class Chat_User(models.Model):
     #Represents the id of the last message seen
     last_seen_id = models.PositiveIntegerField(default=0, editable=False)
 
-    def login(self, room_name="main"):
-        self.room = Room.objects.get(name=room_name)
+    def login(self, room_slug="main"):
+        self.room = Room.objects.get(slug=room_slug)
         print("Room: ", self.room)
         
         lines = self.room.lines.all().reverse()
@@ -22,7 +22,10 @@ class Chat_User(models.Model):
             index = line_count - 1
         else:
             index = settings.chat_history_size - 1
-        self.last_seen_id = lines[index].id
+        if index >= 0:
+            self.last_seen_id = lines[index].id
+        else:
+            self.last_seen_id = 0
         self.save()
         self.room.users.add(self)
         self.room.print("{0} has joined.".format(self.user.username))
@@ -62,6 +65,7 @@ class Room(models.Model):
     """Represents a chat room. (Duh)"""
 
     name = models.TextField(max_length=50)
+    slug = models.TextField(max_length=75, editable=False)
     admins = models.ManyToManyField(Chat_User, related_name="admined_chat_rooms", blank=True, null=True)
 
     def backlog(self, starting_id=None):
@@ -74,4 +78,8 @@ class Room(models.Model):
         chat_user.room = self
         text = sep.join(args)
         chat_user.post(text)
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        self.slug = self.to_url()
+        super().save(*args, **kwargs)
         

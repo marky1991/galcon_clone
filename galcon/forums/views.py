@@ -18,6 +18,7 @@ from .util import clean_post, Forum_Spot
 from . import my_forms
 
 from galcon.models import section_to_rank
+from galcon import settings
 
 class Forum_Base_View(View):
     def dispatch(self, request, *args, url=None, **kwargs):
@@ -120,7 +121,7 @@ class Recent_Posts(Forum_Base_View):
         children = Thread.objects.filter(parent__parent__slug=self.spot.section,
                                              ).annotate(latest_edit=
                                                         models.Max("children__last_modification_date")
-                                                        ).order_by("-latest_edit")
+                                                        ).order_by("-latest_edit")[:settings.recent_post_limit]
         
         return render(request, self.template, {"request": request,
                                         "children": children,

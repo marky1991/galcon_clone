@@ -53,19 +53,19 @@
             <h3>{% trans "Desktop Registration Info (optional)" %}</h3>
 
             <div class="error">
-                {% trans "If you are a Steam customer, you must start the Steam
+                {% blocktrans %}If you are a Steam customer, you must start the Steam
                 Application > click Library > right-click on
                 'Galcon Fusion' > click on 'Manage Game Account...' to
                 receive your registration code if it is not filled in
-                below." %}
+                below.{% endblocktrans %}
             </div>
 
             <div>
-                {% trans "Registration is required to play Galcon on the desktop,
+                {% blocktrans %}Registration is required to play Galcon on the desktop,
                 unless you purchased it from the Mac App Store.
                 <br/>
                 <b>You do not need registration info to be included in the
-                iPhone ranks.)" %}</b>
+                iPhone ranks.){% endblocktrans %}</b>
             </div>
 
             {{form.registration_email|render_errors}}

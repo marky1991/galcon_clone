@@ -18,8 +18,8 @@ class SmartEncoder(json.JSONEncoder):
         return super().default(obj)
 
 @login_required
-def join(request, room_name=None):
-    if room_name is None:
+def join(request, room_slug=None):
+    if room_slug is None:
         return HttpResponseRedirect("/chat/main/join/")
     try:
         username = request.user.username
@@ -33,14 +33,14 @@ def join(request, room_name=None):
         chat_user = models.Chat_User(last_seen_id=0,
                                      user=user)
         chat_user.save()
-    chat_user.login(room_name=room_name)
+    chat_user.login(room_slug=room_slug)
     
-    return HttpResponseRedirect("/chat/" + room_name + "/")
+    return HttpResponseRedirect("/chat/" + room_slug + "/")
 @login_required
-def main(request, room_name=None):
+def main(request, room_slug=None):
     chat_user = request.user.chat_user
     if chat_user.room is None:
-        return HttpResponseRedirect("/chat/" + room_name + "/join/")
+        return HttpResponseRedirect("/chat/" + room_slug + "/join/")
 
     return render(request, "chat/room.html", {"request": request,
                                               "room_name": chat_user.room.name,
@@ -49,7 +49,6 @@ def main(request, room_name=None):
 @login_required
 def leave(request):
     chat_user = request.user.chat_user
-    room_name = chat_user.room.name
     chat_user.logout()
     return HttpResponse("")
 

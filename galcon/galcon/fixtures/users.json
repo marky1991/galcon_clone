@@ -1,0 +1,124 @@
+[  {"fields" : { "classic_rank" : 0,
+        "flash_rank" : 0,
+        "fusion_rank" : 0,
+        "iphone_rank" : 0
+      },
+    "model" : "galcon.rank",
+    "pk" : 1
+  },
+  { "fields" : { "classic_rank" : 0,
+        "flash_rank" : 0,
+        "fusion_rank" : 0,
+        "iphone_rank" : 0
+      },
+    "model" : "galcon.rank",
+    "pk" : 2
+  },
+  { "fields" : { "classic_rank" : 0,
+        "flash_rank" : 0,
+        "fusion_rank" : 0,
+        "iphone_rank" : 0
+      },
+    "model" : "galcon.rank",
+    "pk" : 3
+  },
+    { "fields": {
+        "username": "example_user", 
+        "first_name": "", 
+        "last_name": "", 
+        "is_active": true, 
+        "is_superuser": false, 
+        "is_staff": false, 
+        "last_login": "2013-08-04T17:40:14.107Z", 
+        "groups": [], 
+        "user_permissions": [], 
+        "password": "pbkdf2_sha256$10000$vbPtMFLqC8JH$7LLnSMSnEqmgypIr3ySeC4/SJ240nc5lZOcyVW2xBZE=", 
+        "email": "", 
+        "date_joined": "2013-08-04T17:40:14.107Z"
+    },
+    "model" : "auth.user",
+    "pk" : 1
+  },
+
+ { "fields" : { "avatar" : "",
+        "friends" : [ 3 ],
+        "hidden" : false,
+        "location" : "",
+        "post_count" : 0,
+        "rank" : 1,
+        "registration_code" : "",
+        "registration_email" : "",
+        "slug" : "example_user",
+        "trophies" : [  ],
+        "user" : 1
+      },
+    "model" : "galcon.player",
+    "pk" : 1
+  },
+ { "fields": { 
+        "username": "friendless_user", 
+        "first_name": "", 
+        "last_name": "", 
+        "is_active": true, 
+        "is_superuser": false, 
+        "is_staff": false, 
+        "last_login": "2013-08-04T17:40:14.107Z", 
+        "groups": [], 
+        "user_permissions": [], 
+        "password": "pbkdf2_sha256$10000$vbPtMFLqC8JH$7LLnSMSnEqmgypIr3ySeC4/SJ240nc5lZOcyVW2xBZE=", 
+        "email": "", 
+        "date_joined": "2013-08-04T17:40:14.107Z"
+    },
+    "model" : "auth.user",
+    "pk" : 2
+  },
+
+ { "fields" : { "avatar" : "",
+        "friends" : [ ],
+        "hidden" : false,
+        "location" : "",
+        "post_count" : 0,
+        "rank" : 2,
+        "registration_code" : "",
+        "registration_email" : "example_user@gmail.com",
+        "slug" : "friendless_user",
+        "trophies" : [  ],
+        "user" : 2
+      },
+    "model" : "galcon.player",
+    "pk" : 2
+  },
+ { "fields": {
+        "username": "only_friend", 
+        "first_name": "", 
+        "last_name": "", 
+        "is_active": true, 
+        "is_superuser": false, 
+        "is_staff": false, 
+        "last_login": "2013-08-04T17:40:14.107Z", 
+        "groups": [], 
+        "user_permissions": [], 
+        "password": "pbkdf2_sha256$10000$vbPtMFLqC8JH$7LLnSMSnEqmgypIr3ySeC4/SJ240nc5lZOcyVW2xBZE=", 
+        "email": "", 
+        "date_joined": "2013-08-04T17:40:14.107Z"
+    },
+    "model" : "auth.user",
+    "pk" : 3
+  },
+
+ { "fields" : { "avatar" : "",
+        "friends" : [ 1 ],
+        "hidden" : false,
+        "location" : "",
+        "post_count" : 0,
+        "rank" : 3,
+        "registration_code" : "",
+        "registration_email" : "example_user@gmail.com",
+        "slug" : "only_friend",
+        "trophies" : [  ],
+        "user" : 3
+      },
+    "model" : "galcon.player",
+    "pk" : 3
+  }
+]

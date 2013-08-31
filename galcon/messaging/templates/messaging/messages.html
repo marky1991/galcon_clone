@@ -1,0 +1,80 @@
+{% extends "forums/forum.html" %}
+
+{% load i18n %}
+
+{% block title %}{% trans "Messages" %}{% endblock %}
+
+{% block h2 %}{% trans "Messages" %}{% endblock %}
+
+{% block content %}
+    <div class="clearfix" id="mailbox">
+        <div id="left_mail_column">
+            {% block left_column %}
+                <a href="/messages/new/">{% trans "Compose" %}</a>
+                <a href="/messages/">{% trans "Inbox" %}</a>
+                <a href="/messages/starred/">{% trans "Starred" %}</a>
+                <a href="/messages/sent/">{% trans "Sent" %}</a>
+                <a href="/messages/drafts/">
+                    {% trans "Drafts" %}
+                    {% if user.is_authenticated and draft_count != 0 %}
+                        ({{draft_count}})
+                    {% endif %}
+                </a>
+                <a href="/messages/trash/">{% trans "Trash" %}</a>
+            {% endblock %}
+        </div>
+        <div id="right_mail_column">
+            {% block right_column %}
+                <form id="find_messages" class="inline" method="post">
+                    {% csrf_token %}
+                    <input id="text" name="text" type="text"/>
+                    <input type="submit" value="{% trans "Search" %}"/>
+                </form>
+                
+                <br/>
+                
+                <form id="handle_messages" class="inline" method="post">
+                    {% csrf_token %}
+                    <select name="action">
+                        <option selected="selected" style="display:none;">{% trans "Select Action" %}</option>
+                        <option value="trash">{% trans "Trash" %}</option>
+                        <option value="mark_as_read">{% trans "Mark as read" %}</option>
+                        <option value="mark_as_unread">{% trans "Mark as unread" %}</option>
+                        <option value="star">{% trans "Star" %}</option>
+                        <option value="unstar">{% trans "Unstar" %}</option>
+                    </select>
+                    <input type="submit" value="{% trans "Submit" %}"/>
+
+                    <ol id="message_list">
+                        {% for message in messages %}
+                            <li class="message">
+                                <input type="checkbox" name="target_messages" value="{{message.id}}"/>
+                                {% if message.starred %}
+                                    <span style="color: #000000">☆</span>
+                                {% else %}
+                                    <span></span>
+                                {% endif %}
+                                <a class="author" href="/users/{{message.author}}/">{{message.author.user.username}}</a>
+                                <a class="title" href="/messages/{{message.slug}}/">{{message.title}}</a>
+                                <span class="date">
+                                    {{message.post_date}}
+                                </span>
+                            </li>
+                        {% empty %}
+                            {% trans "You don't have any messages here. You can always pm marky1991 if you want to talk." %}
+                        {% endfor %}
+                    </ol>
+                </form>
+                {% if pages.num_pages != 1 %}
+                    <span class="page_number">{% trans "Page" %} {{page_number}}/{{pages.num_pages}}</span>
+                    <span class="page_list">
+                        {% for page_num in pages.page_range %}
+                            <a href="/messages/pages/{{page_num}}/">{{page_num}}</a>
+                        {% endfor %}
+                    </span>
+                {% endif %}
+            {% endblock %}
+            
+        </div>
+    </div>
+{% endblock %}

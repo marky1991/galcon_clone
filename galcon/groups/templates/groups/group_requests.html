@@ -1,0 +1,32 @@
+{% extends "groups/group.html" %}
+
+{% load i18n %}
+
+{% block buttons %}
+    {% if user_is_admin %}
+        <td>
+            <form method="post" class="inline">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="accept"/>
+                <input type="hidden" name="username" value="{{member.slug}}"/>
+                <input type="submit" value="{% trans "accept" %}"/>
+            </form>
+        </td>
+        <td>
+            <form method="post" class="inline">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="ignore"/>
+                <input type="hidden" name="username" value="{{member.slug}}"/>
+                <input type="submit" value="{% trans "ignore" %}"/>
+            </form>
+        </td>
+        <td>
+            <form method="post" class="inline">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="block"/>
+                <input type="hidden" name="username" value="{{member.slug}}"/>
+                <input type="submit" value="{% trans "block" %}"/>
+            </form>
+        </td>
+    {% endif %}
+{% endblock %}

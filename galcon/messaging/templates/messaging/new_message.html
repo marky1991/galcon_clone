@@ -1,0 +1,59 @@
+{% extends "messaging/messages.html" %}
+
+{% load i18n %}
+
+{% block extra_head %}
+    <script src="{{STATIC_URL}}edit_post.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+{% endblock %}
+
+{% block title %}Messages{% endblock %}
+{% block right_column %}
+    {% if action == "reply" %}
+        <div class="quote" style="background-color: #FFFFFF; color: #000000">
+            {{reply_message.author.user.username}} {% trans "said" %}:
+            <br/>
+            <blockquote>
+                {{reply_message.text}}
+            </blockquote>
+        </div>
+    {% endif %}
+    
+    <form {% if action == "reply" %}action="/messages/new/"{% endif %}class="message_form" method="post">
+        {% csrf_token %}
+
+        <label for="recipient_users">{% trans "To" %}</label>
+        <input id="recipient_users" name="recipient_users" value="{{user_recipients|join:", "}}"/>
+
+        <br/>
+        
+        <label for="recipient_groups">{% trans "To Group" %}</label>
+        <input id="recipient_groups" name="recipient_groups" value="{{group_recipients|join:", "}}"/>
+        
+        <br/>
+
+        <label for="subject">{% trans "Subject" %}</label>
+        <input id="subject" name="title" value="{{form.instance.title}}"/>
+
+        <br/>
+
+        <label for="text">{% trans "Message" %}</label>
+        {% block formatting_buttons %}
+            {% if action == "reply" %}
+                <button onclick="make_quoted()" type="button">{% trans "Quote" %}</button>
+            {% endif %}
+            <button onclick="make_bold()" type="button">B</button>
+            <button onclick="make_underlined()" type="button">U</button>
+            <button onclick="make_italicized()" type="button">I</button>
+            <button onclick="insert_image()" type="button">{% trans "Image" %}</button>
+        {% endblock %}
+        {% block text %}
+            <textarea id="text" rows="12" cols="60" name="{% block content_attribute %}text{% endblock %}">{% block content_data %}{{form.instance.text}}{% endblock %}</textarea>
+        {% endblock %}
+        {% block after_text %}{% endblock %}
+        <br/>
+        <button type="submit" name="action" value="send">{% trans "Send" %}</button>
+        <button type="submit" name="action" value="save_draft">{% trans "Save as Draft" %}</button>
+        <button type="submit" name="action" value="discard">{% trans "Discard" %}</button>
+    </form>        
+{% endblock %}

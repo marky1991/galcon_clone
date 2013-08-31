@@ -1,0 +1,27 @@
+{% extends "creation_form.html" %}
+
+{% load i18n %}
+
+{% block title_block %}
+    <label for="title">{% trans "Title*" %}</label>
+    {% if action == "edit" %}
+        <input id="title" name="title" value="{{form.instance.title}}"/>
+    {% elif action == "reply" %}
+        <input id="title" name="title" value="Re: {{post.title}}"/>
+    {% else %}
+        <input id="title" name="title" value=""/>
+    {% endif %}
+{% endblock %}
+    
+{% block form_header %}
+    {% if action == "reply" %}
+        <div class="quote">
+            {{post.author.user.username}} {% trans "said" %}:
+            <br/>
+            <blockquote>
+                {{post.text}}
+            </blockquote>
+        </div>
+        <br/>
+    {% endif %}
+{% endblock %}

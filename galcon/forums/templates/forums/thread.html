@@ -1,0 +1,33 @@
+{% extends "forums/forum.html" %}
+{% load static %}
+{% load forums_util %}
+
+{% load i18n %}
+
+{% block child_block %}   
+    <tr>
+        <td class="title" colspan="2">
+            {{child.title}} :: {{child.post_date }}
+        </td>
+    </tr>
+    <tr>
+        {% with user_author=child.author.user player_author=child.author %}
+            <td class="profile">
+                {% include "profile_tag.html" %}
+            </td>
+            <td>
+                {% render_post child.text %}
+                {{post|safe|linebreaks}}
+                <br/>
+                {% if child.last_modification_date != child.post_date %}
+                    <div class="edit_note">{% blocktrans with modification_date=child.last_modification_date %}Post updated on {{modification_date}}. {% endblocktrans %}</div>
+                {% endif %}
+                <a class="action_link" href="/forums/{{child.full_url}}/reply/">{% trans "reply" %}</a>
+                <br/>
+                {% if user_author == user %}
+                    <a class="action_link" href="/forums/{{child.full_url}}/edit/">{% trans "edit post" %}</a>
+                {% endif %}
+            </td>
+        {% endwith %}
+    </tr>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "forums/forum.html" %}
+{% load static %}
+{% load forums_util %}
+
+{% load i18n %}
+
+{% block before_table %}
+    <div>
+        <a href="{{request.path}}new_thread/">{% trans "New Thread" %}</a>
+    </div>
+{% endblock %}
+
+
+{% block child_block %}   
+    <tr class="children">
+        <td>
+
+            {% child_link %}
+        </td>
+        <td>
+            {{child.author}}
+        </td>
+        <td>
+            {{child.children.all.count}}
+        </td>
+        <td>
+            {{child.page_views}}
+        </td>
+        <td>
+            {% latest_post_info "thread" %}
+        </td>
+    </tr>
+{% endblock %}

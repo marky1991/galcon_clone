@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block title %}{% trans "Sign Up" %}{% endblock %}
+
+{% block content %}
+    <div style="margin-left: 84px;">
+        <h1>{% trans "Sign Up" %}</h1>
+        {% if not checked_age %}
+            <form method="post">
+                {% csrf_token %}
+                <p>{% trans "To sign up for a Galcon account you must either" %}</p>
+                <ul>
+                    <li>{% trans "Be 13 years of age or older" %}</li>
+                    <li>{% trans "have your guardian <a href="/support/contact/">contact us</a>
+                    for a permission form to have an account created for you." %}</li>
+                </ul>
+                <input type="radio" name="old_enough" value="True" id = "yes"/>
+                <label for="yes">{% trans "I am 13 years of age or older" %}</label>
+                <br/>
+                <input type="radio" name="old_enough" value="False" id="no"/>
+                <label for="no">{% trans "I am not yet 13 years of age" %}</label>
+                <br/>
+                <input type="submit" value="{% trans "Continue" %}"/>
+            </form>
+        {% elif old_enough %}
+            <form id="register_form" method="post">
+                {% csrf_token %}
+                <label style="line-height: normal; margin-bottom: 1.5em">
+                    {% trans "Do you agree with our <a href='/policy/'>policy</a>?*" %}
+                 </label>
+                <input type="radio" name="do_you_agree" id="policy_yes"" value="True">
+                <label class="inline" for="policy_yes">{% trans "I agree" %}</label>
+                <br/>
+                <input type="radio" name="do_you_agree" id="policy_no" value="False">
+                <label class="inline" for="policy_no">{% trans "I do not agree" %}</label>
+                <br/>
+                
+                <label for="username">{% trans "Login Name*" %}</label>
+                <input type="text" name="username" value="{{form.username.value_to_string}}"/>
+                <br/>
+                <label for="password">{% trans "Password*" %}</label>
+                <input type="password" name="password1" id="password1" value="{{form.password1.value_to_string}}">
+                <label class="inline" for="password2">{% trans "Verify" %}</label>
+                <input type="password" name="password2" id="password2" value="{{form.password2.value_to_string}}">
+                <br/>
+                <label for="email">{% trans "E-mail*" %}</label>
+                <input type="text" name="email" value="{{form.email.value_to_string}}"/>
+                <br/>
+                <label for="you_want_updates"style="line-height: normal; margin-bottom: 1.5em">{% trans "Can we send you e-mail updates?" %}</label>
+                <input type="radio" name="can_send_email" id="email_yes" value="True">
+                <label class="inline" for="email_yes">{% trans "Yes, you can send me updates!" %}</label>
+                <br/>
+                <input type="radio" name="can_send_email" id="email_no" value="False">
+                <label class="inline" for="email_no">{% trans "No, please don't e-mail me." %}</label>
+                <hr/>
+
+                <h3>{% trans "Desktop Registration Info (optional)" %}</h3>
+                
+                <div class="error">
+                    {% blocktrans %}If you are a Steam customer, you must start the Steam Application > click
+                    Library > right-click on 'Galcon Fusion' > click on 'Manage Game Account...' to receive your
+                    registration code if it is not filled in below.{% endblocktrans %}
+                </div>
+                <p>
+                    {% blocktrans %}Registration is required to play Galcon on the desktop, unless you purchased it from the Mac App Store.
+                    <b>(You do not need registration info to be included in the iPhone ranks.)</b>{% endblocktrans %}
+                </p>
+                
+                {{form.registration_email.errors}}
+                <label for="registration_email">{% trans "Reg. E-mail" %}</label>
+                <input id="registration_email" name="registration_email" value="{{form.registratition_email.value_to_string}}"/>
+                <br/>
+                {{form.fields.registration_code.errors}}
+                <label for="registration_code">{% trans "Reg. Code" %}</label>
+                <input id="registration_code" name="registration_code" value="{{form.registratition_code.value_to_string}}"/>
+                <br/>
+                <input style="margin-top: 16px; margin-left: 132px;" type="submit" value="{% trans "Sign Up" %}"/>
+                <input type="button" value="{% trans "Cancel" %}">
+            </form>
+        {% else %}
+            <div class="formlike_block">
+                {% blocktrans %}To get an account, have your guardian
+                <a href="/support/contact/">Contact Us</a> for a permission
+                form to have an account created for you.{% endblocktrans %}
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

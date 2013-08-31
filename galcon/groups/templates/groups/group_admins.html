@@ -1,0 +1,45 @@
+{% extends "groups/group.html" %}
+{% load static %}
+{% load galcon_util %}
+
+{% load i18n %}
+
+{% block table_headers %}
+    {{block.super}}
+    <th>
+        {% trans "Adminship Level" %}
+    </th>
+{% endblock %}
+
+{% block buttons %}
+    <td>
+        <form method="post" class="inline">
+            {% csrf_token %}
+            <select name="adminship">
+                {% if not member in group.admins.all %}
+                    <option value="none" selected>{% trans "Member" %}</option>
+                    <option value="admin">{% trans "Admin" %}</option>
+                    <option value="superadmin">{% trans "Superadmin" %}</option>
+                    <option value="owner">{% trans "Owner" %}</option>
+                {% elif not member in group.superadmins.all  %}
+                    <option value="none">{% trans "Member" %}</option>
+                    <option value="admin" selected>{% trans "Admin" %}</option>
+                    <option value="superadmin">{% trans "Superadmin" %}</option>
+                    <option value="owner">{% trans "Owner" %}</option>
+                {% elif not member in group.owners.all  %}
+                    <option value="none">{% trans "Member" %}</option>
+                    <option value="admin">{% trans "Admin" %}</option>
+                    <option value="superadmin" selected>{% trans "Superadmin" %}</option>
+                    <option value="owner">{% trans "Owner" %}</option>
+                {% else %}
+                    <option value="none">{% trans "Member" %}</option>
+                    <option value="admin">{% trans "Admin" %}</option>
+                    <option value="superadmin">{% trans "Superadmin" %}</option>
+                    <option value="owner" selected>{% trans "Owner" %}</option>
+                {% endif %}
+            </select>
+            <input type="hidden" name="username" value="{{member.slug}}"/>
+            <input type="submit" value="{% trans "Update" %}"/>
+        </form>
+    </td>
+{% endblock %}

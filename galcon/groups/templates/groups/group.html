@@ -1,0 +1,102 @@
+{% extends "forums/forum.html" %}
+
+{% load static %}
+{% load i18n %}
+
+{% load galcon_util %}
+
+{% block title %}{{group.name}}{% endblock %}
+{% block h2 %}{{group.name}}{% endblock %}
+
+{% block after_h2 %}
+    <a href="/groups/{{group.slug}}/">{% trans "About" %}</a>
+    {% if user_is_admin %}
+        |<a href="/groups/{{group.slug}}/edit/">{% trans "Manage This Group" %}</a>
+        |<a href="/groups/{{group.slug}}/requests/">{% trans "Manage Requests" %}</a>
+        |<a href="/groups/{{group.slug}}/blocks/">{% trans "Manage Blocks" %}</a>
+        {% if user_is_superadmin%}
+            |<a href="/groups/{{group.slug}}/admins/">{% trans "Manage Admins" %}</a>
+        {% endif %}
+    {% endif %}
+
+    <br/>
+
+    {% if user_is_member %}
+        <form method="post" action="/groups/{{group.slug}}/leave/" class="inline">
+            {% csrf_token %}
+            <input type="hidden" name="username" value="{{user.username}}"/>
+            <input type="submit" value="{% trans "Leave this group" %}"/>
+        </form>
+    {% else %}
+        <form method="post" action="/groups/{{group.slug}}/join/" class="inline">
+            {% csrf_token %}
+            <input type="hidden" name="username" value="{{user.username}}"/>
+            <input type="submit" value="{% trans "Join this Group" %}"/>
+        </form>
+    {% endif %}
+    
+    <br/>
+
+    <div>
+        {{group.description}}
+    </div>
+    {% if form != None %}
+        {{form|render_errors}}
+    {% endif %}
+
+    {% if messages %}
+        {% for message in messages %}
+            <div {% if message.tags %}class="{{message.tags}}{% endif %}">{{message}}</div>
+        {% endfor %}
+    {% endif %}
+    <table>
+        <tr>
+            {% block table_headers %}
+                <th>{% trans "Member" %}</th>
+                <th>{% trans "Admin" %}</th>
+                <th>iPhone</th>
+                <th>{% trans "Classic" %}</th>
+                <th>{% trans "Fusion" %}</th>
+            {% endblock %}
+        </tr>
+        {% for member in players %}
+            <tr>
+                <td>
+                    <a href="/users/{{member.user.username}}/">{{member.user.username}}</a>
+                </td>
+                <td>
+                    {{is_admin|lookup:member}}
+                </td>
+                <td>
+                    {{member.rank.iphone_rank|to_flag}}
+                </td>
+                <td>
+                    {{member.rank.classic_rank|to_flag}}
+                </td>
+                <td>
+                    {{member.rank.fusion_rank|to_flag}}
+                </td>
+                {% block buttons %}
+                    {% if user_is_admin %}
+                        <td>
+                            <form method="post" class="inline">
+                                {% csrf_token %}
+                                <input type="hidden" name="action" value="{% trans "remove" %}"/>
+                                <input type="hidden" name="username" value="{{member.slug}}"/>
+                                <input type="submit" value="remove"/>
+                            </form>
+                        </td>
+                        <td>
+                            <form method="post" class="inline">
+                                {% csrf_token %}
+                                <input type="hidden" name="action" value="{% trans "block" %}"/>
+                                <input type="hidden" name="username" value="{{member.slug}}"/>
+                                <input type="submit" value="block"/>
+                            </form>
+                        </td>
+                    {% endif %}
+                {% endblock %}
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

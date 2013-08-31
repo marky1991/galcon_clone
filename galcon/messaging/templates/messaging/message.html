@@ -1,0 +1,46 @@
+{% extends "messaging/messages.html" %}
+
+{% load i18n %}
+
+
+{% block right_column %}
+    <form method="post" class="hidden actions">
+        {% csrf_token %}
+        {% if not message.starred %}
+            <button type="submit" name="action" value="star">{% trans "Star" %}</button>
+        {% else %}
+            <button type="submit" name="action" value="unstar">{% trans "Unstar" %}</button>
+        {% endif %}
+        <button type="submit" name="action" value="mark_unread">{% trans "Mark as Unread" %}</button>
+        <button type="submit" name="action" value="trash">{% trans "Trash" %}</button>
+    </form>
+    <div>
+        <h2>{{message.title}}</h2>
+    </div>
+    <div class="message">
+        <div class="message_header">
+            {% if action == "reply" %}
+                <div style="background-color: #FFFFFF; color: #000000">
+                    {{reply_message.author.user.username}} {% trans "said" %}:
+                    <br/>
+                    <blockquote>
+                        {{post.text}}
+                    </blockquote>
+                </div>
+                <br/>
+            {% endif %}
+            {% blocktrans with recipient_names|join:", " as recipient_names%}
+            {{author_name}} to {{recipient_names}} -
+            {{message.post_date}}{% endblocktrans %}
+        </div>
+        <div class="message_body">
+            {{message.text}}
+        </div>
+    </div>
+    <form method="post" class="hidden actions">
+        {% csrf_token %}
+        <button type="submit" name="action" value="reply">{% trans "Reply" %}</button>
+        <button type="submit" name="action" value="reply_all">{% trans "Reply All" %}</button>
+        <button type="submit" name="action" value="forward">{% trans "Forward" %}</button>
+    </form>
+{% endblock %}

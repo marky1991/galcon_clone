@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+{% load galcon_util %}
+
+{% load i18n %}
+
+{% block title %}{{username}}{% endblock %}
+
+{% block content %}
+{% if player_exists %}
+    <div class="clearfix" style="margin-left: auto; margin-right: auto;">
+        <h1>{% trans "Profile" %} :: {{username}} :: {% trans "Friends" %}</h1>
+        <a href="/users/{{username}}/">{% blocktrans %}See {{username}}'s profile{% endblocktrans %}</a>
+        <br/>
+
+        {% if friends|length_is:"0" %}
+            {% blocktrans %}{{username}} has no friends. :({% endblocktrans %}
+        {% else %}
+            <ul class="friend_list">
+                {% for friend in friends %}
+                    <li class="friend">
+                        {% if friend.avatar != "" %}
+                            <img class="avatar" src='{{friend.avatar.url}}'/>
+                            <br/>
+                        {% endif %}
+                        {{friend.user.username}}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+    <br/>
+    
+{% else %}
+    <h1>{% trans "Player doesn't exist!" %}</h1>
+{% endif %}
+{% endblock %}

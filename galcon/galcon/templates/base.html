@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+{% load static %}
+{% load i18n %}
+
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="description" content="Galcon is an awesome high-paced multi-player galactic arcade-strategy game. You send swarms of ships from planet to planet to take over the galaxy.">
+        <meta name="keywords" content="Galcon,risk, Strategy, Games, Game, Multi-player, ships, planets, galaxy, conquest, iPhone, iPod Touch, pc, windows, mac, osx, linux">
+        <link rel="alternate" type="application/rss+xml" title="Galcon RSS Feed" href="http://www.galcon.com/news/feed/" />
+        <link rel="stylesheet" href="{{ STATIC_URL }}style.css" type="text/css" />
+        <title>{% block title %}Galcon{% endblock %}</title>
+        <link rel="icon" type="image/png" href="/site/favicon.ico">
+        {% if "timezone" not in request.session or True %}
+            <script>
+                var date = new Date();
+                document.cookie ="offset=" + date.getTimezoneOffset().toString() + ";";
+            </script>
+        {% endif %}
+
+        {% block extra_head %}{% endblock %}
+    </head>
+    <body>
+        {% block header %}
+            <span class="top_header">
+                <span class="top_button">
+                    <a href="/">{% trans "Home" %}</a>
+                </span>
+                <span class="top_button">
+                    <a href="/games/">{% trans "Games" %}</a>
+                </span>
+                <span class="top_button">
+                    <a href="/forums/">{% trans "Forums" %}</a>
+                </span>
+                <span class="top_button">
+                    <a href="/igalcon/">iGalcon</a>
+                </span>
+                <span class="top_button">
+                    <a href="/fusion/">Fusion</a>
+                </span>
+                <span class="top_button">
+                    <a href="http://www.zazzle.com/igalcon/">Store</a>
+                </span>
+                <span class="top_button">
+                    <a href="/support/">{% trans "Support" %}</a>
+                </span>
+                <span style="float: left; margin-left: 4%">
+                    <a href="http://www.twitter.com/galcon/" class="none">
+                        <img src="{% static 'twitter_logo_header.png' %}" style="padding-top:4px;"/>
+                    </a>
+                </span>
+                <span class="top_button" id="your_profile">
+                    {% if user.is_authenticated %}
+                        <a href="/users/{{user.username}}/">{% trans "Your Profile" %}</a>
+                    {% else %}
+                        <a href="/register/">{% trans "Create Account" %}</a>
+                    {% endif %}
+                </span>
+                <span class="top_button">
+                    {% if user.is_authenticated %}
+                        <a href="/logout/">{% trans "Logout" %}</a>
+                    {% else %}
+                        <a href="/login/">{% trans "Login" %}</a>
+                    {% endif %}
+                    
+                </span>
+            </span>
+            <a href='http://www.kickstarter.com/projects/philhassey/galcon-2-galactic-conquest' target='_blank' >
+                <img class="banner" src='{% static "ks_finale.jpg" %}' border=0 />
+            </a>
+        {% endblock %}
+        {% block after_header %}{% endblock %}
+        <div class="main">
+            {% block content %}{% endblock %}
+        </div>
+
+        <br/>
+        
+        {% block footer %}
+            <div class="footer">
+                <a href='/chat/enable/'>{% trans "Enable Constant Chat" %}</a>
+                Copyright &copy; 2013
+                <a href='http://www.philhassey.com/'>Phil Hassey</a>.
+                All rights reserved.
+                            | <a href='/rss/'>{% trans "RSS Feed" %}</a>
+                            | <a href='/support/'>{% trans "Contact Us" %}</a>
+                            | <a href='/policy/'>{% trans "Our Policies" %}</a>
+                            <br/>
+                            <br/>
+            </div>
+        {% endblock %}
+    </body>
+</html>
+        

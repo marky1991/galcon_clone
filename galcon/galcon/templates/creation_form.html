@@ -1,0 +1,34 @@
+{% extends "forums/forum.html" %}
+
+{% load i18n %}
+
+{% block extra_head %}
+    <script src="{{STATIC_URL}}edit_post.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+{% endblock %}
+
+{% block after_h2 %}
+    {% block form_header %}{% endblock %}
+    <form class="edit_form" method="post">
+        {% csrf_token %}
+        {% block title_block %}{% endblock %}
+        <br/>
+        <label for="text">{% block content_title %}{% trans "Content*" %}{% endblock %}</label>
+        {% block formatting_buttons %}
+            {% if action == "reply" %}
+                <button onclick="make_quoted()" type="button">{% trans "Quote" %}</button>
+            {% endif %}
+            <button onclick="make_bold()" type="button">B</button>
+            <button onclick="make_underlined()" type="button">U</button>
+            <button onclick="make_italicized()" type="button">I</button>
+            <button onclick="insert_image()" type="button">{% trans "Image" %}</button>
+        {% endblock %}
+        <br/>
+        {% block text %}
+            <textarea id="text" rows="12" cols="60" name="{% block content_attribute %}text{% endblock %}">{% block content_data %}{{form.instance.text}}{% endblock %}</textarea>
+        {% endblock %}
+        {% block after_text %}{% endblock %}
+        <br/>
+        <input type="submit" value="{% trans "Continue" %}"/>
+    </form>
+{% endblock %}

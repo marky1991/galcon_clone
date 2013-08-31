@@ -1,0 +1,16 @@
+{% load forums_util %}
+
+{% if rank != "" %}
+    <img src="{{STATIC_URL}}flags/{{player_author.rank|get_attr:rank}}.gif"/>
+{% endif %}
+{{user_author.username}}
+<br/>
+{% if player_author.avatar != "" %}
+    <img class="avatar" src="/{{player_author.avatar}}"/>
+{% endif %}
+<br/>
+<b>Joined:</b> {{user_author.date_joined|format_date}}
+<br/>
+<b>Posts:</b> {{player_author.post_count}}
+<br/>
+<b>Location:</b> {{player_author.location}}

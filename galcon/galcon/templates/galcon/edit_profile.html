@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% load static %}
+{% load galcon_util %}
+
+{% load i18n %}
+
+{% block content %}
+    <big><big><big>Complete</big></big></big>
+    <div style="margin-left: 84px;">
+        <h2>{% trans "Edit Your Profile" %}</h2>
+        <form id="edit_profile_form" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{form.password1|render_errors}}
+            {{form.password2|render_errors}}
+            <label for="password1">{% trans "Edit Your Profile" %}</label>
+            <input type="password" name="password1" id="password1" value=""/>
+            <label class="inline" for="password2">{% trans "Verify" %}</label>
+            <input type="password" name="password2" id="password2" value=""/>
+
+            <br/>
+
+            {{form.email|render_errors}}
+            <label for="email">{% trans "Email*" %}</label>
+            <input type="text" name="email" id="email" value="{{form.data.email}}"/>
+
+            <br/>
+
+            <hr/>
+            {{form.avatar|render_errors}}
+            <label>{% trans "Avatar" %}</label>
+            {% if request.user.player.avatar %}
+                <img class="avatar" src="{{request.user.player.avatar.url}}"/>
+                <br/>
+            {% endif %}
+            <label>&nbsp;</label>
+            <input type="file" name="avatar"/>
+            
+            <br/>
+            
+            <label>&nbsp;</label>
+            <span>
+                {% trans "(Avatar image must be smaller than 80x80 and 16k) (TODO)" %}
+            </span>
+
+            <br/>
+
+            {{form.location|render_errors}}
+            <label for="location">{% trans "Location" %}</label>
+            <input type="text" name="location" id="location" value="{{form.data.location}}"/>
+
+            <hr/>
+
+            <h3>{% trans "Desktop Registration Info (optional)" %}</h3>
+
+            <div class="error">
+                {% trans "If you are a Steam customer, you must start the Steam
+                Application > click Library > right-click on
+                'Galcon Fusion' > click on 'Manage Game Account...' to
+                receive your registration code if it is not filled in
+                below." %}
+            </div>
+
+            <div>
+                {% trans "Registration is required to play Galcon on the desktop,
+                unless you purchased it from the Mac App Store.
+                <br/>
+                <b>You do not need registration info to be included in the
+                iPhone ranks.)" %}</b>
+            </div>
+
+            {{form.registration_email|render_errors}}
+            <label for="registration_email">{% trans "Reg. E-mail" %}</label>
+            <input type="text" name="registration_email" id="registration_email" value="{{form.data.registration_email}}"/>
+
+            <br/>
+
+            {{form.registration_code|render_errors}}
+            <label for="registration_code">{% trans "Reg. Code" %}</label>
+            <input type="text" name="registration_code" id="registration_code" value="{{form.data.registration_code}}"/>
+
+            <br/>
+
+            <input style="margin-top: 16px; margin-left: 132px;" type="submit" value="{% trans "Save" %}"/>
+            <input type="button" value="{% trans "Cancel" %}">
+        </form>
+    </div>
+{% endblock %}

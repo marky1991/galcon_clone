@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block title %}{% trans "Sign Up" %}{% endblock %}
+
+{% block content %}
+    <div style="margin-left: 84px;">
+        <h1>{% trans "Sign Up" %}</h1>
+        <form class="clearfix">
+            <p>{% trans "To sign up for a Galcon account you must either" %}</p>
+            <ul>
+                <li>{% trans "Be 13 years of age or older" %}</li>
+                <li>{% trans "have your guardian <a href='/contact/'>contact us</a>
+                for a permission form to have an account created for you." %}</li>
+            </ul>
+            <input type="radio" name="yes"/>
+            <input type="radio" name="no"/>
+        </form>
+    </div>
+{% endblock %}

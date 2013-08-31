@@ -1,0 +1,33 @@
+{% extends "creation_form.html" %}
+{% load galcon_util %}
+
+{% load i18n %}
+
+{% block content_attribute %}description{% endblock %}
+
+{% block title %}{% trans "Groups" %}{% endblock %}
+{% block form_header %}{% trans "Create a Group" %}{% endblock %}
+
+{% block content_title %}{% trans "Content*" %}{% endblock %}
+{% block title_block %}
+    {{form.name|render_errors}}
+    <label for="name">{% trans "Name*" %}</label>
+    <input id="name" name="name" value="{{form.instance.name}}"/>
+{% endblock %}
+
+{% block content_data %}{{form.instance.description}}{% endblock %}
+
+{% block after_text %}
+    <br/>
+    <label for="type">{% trans "Type" %}</label>
+    <select id="type" name="join_requires_approval">
+        {% if form.instance.join_requires_approval != True %}
+            <option label="{% trans "Open to Everyone" %}" value="False" selected="selected"/>
+            <option label="{% trans "Membership Requires Approval" %}" value="True"/>
+        {% else %}
+            <option label="{% trans "Open to Everyone" %}" value="False"/>
+            <option label="{% trans "Membership Requires Approval" %}" value="True" selected="selected"/>
+        {% endif %}
+    </select>
+{% endblock %}
+        

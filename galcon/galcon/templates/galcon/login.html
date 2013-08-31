@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block title %}{% trans "Sign In" %}{% endblock %}
+
+{% block content %}
+    <div style="margin-left: 84px;">
+        <h1>{% trans "Sign In" %}</h1>
+        <form id="login_form" method="post">
+            {% csrf_token %}
+            {{form.errors}}
+            <label class="login" for="username">{% trans "User name*" %}</label>
+                <input type="text" name="username" value="{{form.username.value_to_string}}"/>
+                <br/>
+                <label class="login" for="password">{% trans "Password*"%}</label>
+                <input type="password" name="password" value="{{form.password.value_to_string}}"/>
+                <a href="/forgotpassword">{% trans "Forgot your password?" %}</a>
+                <br/>
+                <input style="margin-top: 16px; margin-left: 85px;" type="submit" value="{% trans "Sign In" %}"/>
+            <div style="text-align: center; clear: both; float: none">
+                <a href="/register/">{% trans "Sign up for an account" %}</a>
+            </div>
+        </form>
+    </div>
+{% endblock %}

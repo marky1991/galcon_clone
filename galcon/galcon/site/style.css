@@ -1,0 +1,343 @@
+body {
+    background-color: #000000;
+    background-image: url("/site/bg2.jpg");
+    background-repeat: no-repeat;
+    background-position: top center;
+    color: #FFFFFF;
+    width: 56.5%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+body, p, form, td, th, div, span, ol, ul, li, a, h1, h2, h3, h4, h5 {
+    font-family: 'Lucida Grande', Verdana, Arial, Sans-Serif;
+}
+
+h1, h2, h3, h4, h5 {
+    font-weight: normal;
+}
+
+img.banner {
+    width: 100%;
+}
+
+.top_button, .forum_button {
+    padding: 0px 10px 0px 10px;
+    float: left;
+    display: inline-block;
+    margin: 10px 0px 10px 0px;
+}
+
+.top_button:last-child, .forum_button:last-child {
+    float: none;
+}
+
+#community_button {
+    color: #000000;
+    background-color: #55aaff;
+    border: 2px solid #003366;
+    width: 13%;
+}
+
+.forum_button {
+    width: 14%;
+}
+
+.top_button {
+    width: 7%;
+    font-size: 10px;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+}
+.forum_button a:hover, .top_button a:hover {
+    background-image: url("/site/fade2.png");
+    color: #ffffff;
+    border: 1px solid #555555;
+    text-decoration: none;
+}
+
+.forum_button a, .top_button a, .forum_button a:visited, .top_button a:visited {
+    color: #ffffff;
+    display: block;
+    background-image: url("/site/fade1.png");
+    background-size: cover;
+    padding: 5px;
+    border: 1px solid #555555;
+    text-align: center;
+}
+
+.forum_button a {
+    font-size: 12px;
+}
+
+a.breadcrumb {
+    color: #FFFFFF;
+}
+
+a.breadcrumb:hover {
+    text-decoration: underline;
+}
+
+a.breadcrumb:visited {
+    color: #FFFFFF;
+}
+
+a {
+    color: #FFBB33;
+    font-weight: bold;
+}
+
+a:visited {
+    color: #33bbff;
+}
+
+form a, formlike_block a {
+    color: #00aaff;
+}
+
+#forum a:hover {
+    text-decoration: underline;
+}
+
+table.header {
+    
+}
+
+#forum th {
+    padding: 10px;
+}
+
+#forum {
+    width: 87%;
+}
+
+#forum tr > td:first-child {
+    text-align: left;
+}
+
+#forum a:not(:visited), #forum tr > td:first-child a:visited {
+    color: #FFBB33;
+}
+
+#forum tr > td {
+    text-align: center;
+}
+
+#forum td {
+    padding: 10px;
+}
+
+td.profile {
+    text-align: center;
+    vertical-align: top;
+}
+
+body, p, form, td, th, div, span, ol, ul, li, a, h1, h2, h3, h4, h5 {
+    font-family: 'Lucida Grande', Verdana, Arial, Sans-Serif;
+}
+
+h2 a {
+    font-weight: normal;
+}
+
+body, p, form, td, th, div, span, ol, ul, li {
+    font-size: 14px;
+}
+
+.action_link {
+    float:right;
+    padding-right: 1%;
+}
+
+td.title {
+    text-align: center;
+}
+
+.edit_note {
+    text-align: center;
+    font-style: italic;
+}
+
+img.avatar {
+    max-height:100px;
+    max-width: 100px;
+}
+
+#your_profile {
+    width: 12%;
+}
+form:not(.hidden), .formlike_block:not(.hidden) {
+    background-color: #FFFFFF;
+    width: 550px;
+    padding: 6px;
+    clear: both;
+    color: #000000;
+}
+
+#find_group {
+    float: right;
+    margin-right: 4%;
+}
+/**
+form div {
+    float: left;
+    height: 32px;
+}**/
+
+form {
+    line-height: 32px;
+}
+
+#login_form label, #register_form label, #edit_profile_form label {
+    display:block;
+    float: left;
+}
+
+#edit_profile_form label {
+    width: 98px;
+}
+
+#login_form label {
+    width: 85px;
+}
+
+#register_form label{
+    width: 132px;
+}
+
+label.inline {
+    display: inline !important;
+    width: auto !important;
+    float: none !important;
+}
+
+form.inline {
+    background-color: transparent;
+    width: auto;
+    clear: none;
+    color: inherit;
+    padding: inherit;
+    display: inline;
+}
+
+#mailbox {
+    color: #00AAFF;
+    width: 85.36%;
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#mailbox > div {
+    display: table-cell;
+}
+
+#left_mail_column {
+    background-color: #FFFFFF;
+    width: 17.14%
+}
+
+#left_mail_column a {
+    display: block;
+}
+
+#right_mail_column {
+    background-color: #CCDDEE;
+    width: 82.86%;
+}
+
+#message_list {
+    list-style-type: none;
+    border-style: solid;
+    border-width:  2px;
+    border-color: #000000;
+}
+
+#message_list .message {
+    background-color: #DDDDDD;
+    width: 100%;
+}
+
+.clearfix:after {
+    content: " ";
+    display: block;
+    clear: both;
+}
+
+.error {
+    border: 2px solid #FFAAAA;
+    background-color: #AA0000;
+    color: #FFFFFF;
+    padding: 4px;
+    font-weight: bold;
+}
+
+.clearfix {
+    display: inline-block;
+}
+
+th {
+    background-image: url("/site/fade1.png");
+}
+
+td {
+    background-image: url("/site/fade2.png");
+}
+
+textarea {
+    width: 37em;
+    height: 13em;
+}
+
+div.profile, span.profile {
+    float: left;
+}
+.trophy_list {
+    width: 120px;
+    list-style: none;
+    line-height: normal;
+    clear: both;
+    display: inline;
+}
+
+.trophy {
+    width: 95px;
+    text-align: center;
+    float: left;
+}
+
+img.avatar {
+    max-width: 80px;
+    max-height: 80px;
+}
+img.trophy_image {
+    height: 66px;
+    width: 67px;
+}
+
+#messages {
+    background-color: #FFFFFF;
+    color: #000000;
+    height: 400px;
+    width: 58.33%;
+    padding: 5px 0px;
+    overflow: auto;
+}
+
+#messages .message {
+    display: table-row;
+}
+
+#messages .message > * {
+    display: table-cell;
+    padding: 0px 0px 0px 5px;
+}
+
+.time {
+    color: #AAAAAA;
+    white-space: nowrap;
+}

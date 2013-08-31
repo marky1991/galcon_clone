@@ -1,0 +1,37 @@
+{% extends "forums/forum.html" %}
+{% load static %}
+{% load galcon_util %}
+{% load i18n %}
+
+{% block title %}{% trans "Groups" %}{% endblock %}
+
+{% block h1 %}{% trans "Groups" %}{% endblock %}
+{% block after_h2 %}
+    <a href="/groups/new/">{% trans "Create a Group" %}</a>|
+    {% if user.is_authenticated %}
+        <a href="/users/{{user.username}}/groups/">{% trans "Your Groups" %}</a>
+    {% endif %}
+    
+    <form id="find_group" class="inline" method="post">
+        {% csrf_token %}
+        <label for="group_name">{% trans "Find a group:" %}</label>
+        <input id="group_name" name="group_name" type="text"/>
+        <input type="submit" value="{% trans "Search" %}"/>
+    </form>
+
+    <br/>
+
+    {% if group_name == None %}
+        {% if username != None %}
+            <h2>{% blocktrans %}{{username}}'s Groups{% endblocktrans %}</h2>
+        {% endif %}
+        {% for group in groups %}
+            <span class="group">
+                <a href="/groups/{{group.to_url}}/">{{group.name}}</a>
+            </span>
+            <br/>
+        {% endfor %}
+
+        <br/>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% load forums_util %}
+{% load static %}
+
+{% load i18n %}
+
+{% block title %}{% trans "Forums" %}{% endblock %}
+
+{% block after_header %}
+        <span class="forum_header">
+            <div class="forum_button" id="community_button">:: {% trans "Community" %} ::</div>
+            <div class="forum_button">
+                <a href="/forums/">{% trans "Forums" %}</a>
+            </div>
+            <div class="forum_button">
+                <a href="/messages/">{% trans "Messages" %}</a>
+            </div>
+            <div class="forum_button">
+                <a href="/groups/">
+                    {% trans "Groups" %}
+                    {% if user.is_authenticated %}
+                        ({{user.player.groups.count}})
+                    {% endif %}
+                </a>
+            </div>
+            <div class="forum_button">
+                <a href="/chat/">{% trans "Chat" %}</a>
+            </div>
+            <div class="forum_button">
+                <a href="/{{request.user.username}}/friends/">
+                    {% trans "Friends" %}
+                    {% if user.is_authenticated and user.player.friend_requests.count != 0 %}
+                        ({{user.player.friend_requests.count}})
+                    {% endif %}
+                </a>
+            </div>
+        </span>
+{% endblock %}
+
+{% block content %}
+    <div class="forum_wrapper">
+        <h2>
+        {% block h2 %}
+            {% for crumb, url in breadcrumbs %}
+                <a class="breadcrumb" href={{url}}>{{crumb}}</a>
+                {% if not forloop.last %}
+                    ::
+                {% endif %}
+            {% endfor %}
+            
+        {% endblock %}
+        </h2>
+        {% block after_h2 %}
+            {% block before_table %}{% endblock %}
+            <br/>
+            <table id="forum">
+                <tr>
+                    {% for header in headers %}
+                        <th>{{header}}</th>
+                    {% endfor %}
+                </tr>
+                {% for child in children %}
+                    {% block child_block %}
+                        <tr class="children">
+                           <td>
+                               {% child_link %}
+                               <br/>
+                               {{child.description}}
+                            </td>
+                            <td>
+                                {{child.children.count}}
+                            </td>
+                            <td>
+                                {% latest_post_info "section" %}
+                            </td>
+                        </tr>
+                    {% endblock %}
+                {% endfor %}
+            </table>
+        {% endblock %}
+    </div>
+{% endblock %}

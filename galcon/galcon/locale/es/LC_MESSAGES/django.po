@@ -1,0 +1,299 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-08-19 13:54-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: templates/base.html:27
+msgid "Home"
+msgstr "Inicio"
+
+#: templates/base.html:30
+msgid "Games"
+msgstr "Juegos"
+
+#: templates/base.html:33
+msgid "Forums"
+msgstr "Foros"
+
+#: templates/base.html:45
+msgid "Support"
+msgstr "Soporte"
+
+#: templates/base.html:54 templates/galcon/profile.html:15
+msgid "Your Profile"
+msgstr "Su Perfil"
+
+#: templates/base.html:56
+msgid "Create Account"
+msgstr "Crear una cuenta"
+
+#: templates/base.html:61
+msgid "Logout"
+msgstr "Cerrar Sesión"
+
+#: templates/base.html:63
+msgid "Login"
+msgstr "Iniciar Sesión"
+
+#: templates/base.html:81
+msgid "Enable Constant Chat"
+msgstr "Activar Chat Constante"
+
+#: templates/base.html:85
+msgid "RSS Feed"
+msgstr "Fuente RSS"
+
+#: templates/base.html:86
+msgid "Contact Us"
+msgstr "Contacte con Nosotros"
+
+#: templates/base.html:87
+msgid "Our Policies"
+msgstr "Nuestras Políticos"
+
+#: templates/creation_form.html:16
+msgid "Content*"
+msgstr "Texto*"
+
+#: templates/creation_form.html:19
+msgid "Quote"
+msgstr "Citar"
+
+#: templates/creation_form.html:24
+msgid "Image"
+msgstr "Imágen"
+
+#: templates/creation_form.html:32 templates/galcon/register.html:25
+msgid "Continue"
+msgstr "Seguir"
+
+#: templates/galcon/age_check.html:5 templates/galcon/age_check.html.py:9
+#: templates/galcon/register.html:5 templates/galcon/register.html.py:9
+#: templates/galcon/register.html:79
+msgid "Sign Up"
+msgstr "Inscribirse"
+
+#: templates/galcon/age_check.html:11 templates/galcon/register.html:13
+msgid "To sign up for a Galcon account you must either"
+msgstr "Para apuntarse para una cuenta Galcon, tiene que"
+
+#: templates/galcon/age_check.html:13 templates/galcon/register.html:15
+msgid "Be 13 years of age or older"
+msgstr "tener al menos 13 años"
+
+#: templates/galcon/edit_profile.html:10 templates/galcon/edit_profile.html:15
+msgid "Edit Your Profile"
+msgstr "Editar Su Perfil"
+
+#: templates/galcon/edit_profile.html:17 templates/galcon/register.html:45
+msgid "Verify"
+msgstr "Verificar"
+
+#: templates/galcon/edit_profile.html:23
+msgid "Email*"
+msgstr "Email*"
+
+#: templates/galcon/edit_profile.html:30
+msgid "Avatar"
+msgstr "Avatar"
+
+#: templates/galcon/edit_profile.html:42
+msgid "(Avatar image must be smaller than 80x80 and 16k) (TODO)"
+msgstr "(Su avatar tiene que ser menos que 80x80 y 16 KB) (TODO)"
+
+#: templates/galcon/edit_profile.html:48
+msgid "Location"
+msgstr "Lugar"
+
+#: templates/galcon/edit_profile.html:53 templates/galcon/register.html:59
+msgid "Desktop Registration Info (optional)"
+msgstr "Información de Registro para el Juego de Escritorio (Opcional)"
+
+#: templates/galcon/edit_profile.html:72 templates/galcon/register.html:72
+msgid "Reg. E-mail"
+msgstr "Email de Registro"
+
+#: templates/galcon/edit_profile.html:78 templates/galcon/register.html:76
+msgid "Reg. Code"
+msgstr "Código de Registro"
+
+#: templates/galcon/edit_profile.html:83
+msgid "Save"
+msgstr "Guardar"
+
+#: templates/galcon/edit_profile.html:84 templates/galcon/register.html:80
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: templates/galcon/friends.html:12 templates/galcon/profile.html:13
+msgid "Profile"
+msgstr "Perfil"
+
+#: templates/galcon/friends.html:12
+msgid "Friends"
+msgstr "Amigos"
+
+#: templates/galcon/friends.html:13
+#, python-format
+msgid "See %(username)s's profile"
+msgstr "Ver el perfil de %(username)s"
+
+#: templates/galcon/friends.html:17
+#, python-format
+msgid "%(username)s has no friends. :("
+msgstr "%(username)s no tiene amigos :("
+
+#: templates/galcon/friends.html:35 templates/galcon/profile.html:75
+msgid "Player doesn't exist!"
+msgstr "¡Ese Jugador no existe!"
+
+#: templates/galcon/login.html:5 templates/galcon/login.html.py:9
+#: templates/galcon/login.html:20
+msgid "Sign In"
+msgstr "Iniciar Sesión"
+
+#: templates/galcon/login.html:13
+msgid "User name*"
+msgstr "Nombre de Usuario*"
+
+#: templates/galcon/login.html:16 templates/galcon/register.html:43
+msgid "Password*"
+msgstr "Contraseña*"
+
+#: templates/galcon/login.html:18
+msgid "Forgot your password?"
+msgstr "¿Se oldivó su contraseña?"
+
+#: templates/galcon/login.html:22
+msgid "Sign up for an account"
+msgstr "Apuntarse para una cuenta"
+
+#: templates/galcon/profile.html:16
+msgid "Edit Profile"
+msgstr "Editar su Perfil"
+
+#: templates/galcon/profile.html:17
+msgid "Newsletter"
+msgstr "Boletín Informativo"
+
+#: templates/galcon/profile.html:18
+msgid "Uploads"
+msgstr "Cargas"
+
+#: templates/galcon/profile.html:23
+msgid "Find a friend"
+msgstr "Encontrar un amigo"
+
+#: templates/galcon/profile.html:25
+msgid "Go!"
+msgstr "¡Vaya!"
+
+#: templates/galcon/profile.html:29
+#, python-format
+msgid "See %(username)s's friends"
+msgstr "Ver el amigos de %(username)s"
+
+#: templates/galcon/profile.html:39
+msgid "Classic Galcon"
+msgstr "Galcon Clásico"
+
+#: templates/galcon/profile.html:45
+msgid "iPhone Galcon"
+msgstr "Galcon en iPhone"
+
+#: templates/galcon/profile.html:51
+msgid "Flash Galcon"
+msgstr "Galcon de Flash"
+
+#: templates/galcon/profile.html:57
+msgid "Galcon Fusion"
+msgstr "Galcon Fusion"
+
+#: templates/galcon/register.html:20
+msgid "I am 13 years of age or older"
+msgstr "Yo tengo más que 13 años"
+
+#: templates/galcon/register.html:23
+msgid "I am not yet 13 years of age"
+msgstr "Yo no tengo 13 años"
+
+#: templates/galcon/register.html:31
+msgid "Do you agree with our <a href='/policy/'>policy</a>?*"
+msgstr "Està de acuerdo con nuestros <a href=\"/policy/\">políticos</a>?*"
+
+#: templates/galcon/register.html:34
+msgid "I agree"
+msgstr "Estoy de acuerdo"
+
+#: templates/galcon/register.html:37
+msgid "I do not agree"
+msgstr "No estoy de acuerdo"
+
+#: templates/galcon/register.html:40
+msgid "Login Name*"
+msgstr "Nombre de usuario*"
+
+#: templates/galcon/register.html:48
+msgid "E-mail*"
+msgstr "Email*"
+
+#: templates/galcon/register.html:51
+msgid "Can we send you e-mail updates?"
+msgstr "Le podemos enviar emails?"
+
+#: templates/galcon/register.html:53
+msgid "Yes, you can send me updates!"
+msgstr "Sí, me puede enviar emails"
+
+#: templates/galcon/register.html:56
+msgid "No, please don't e-mail me."
+msgstr "No, por favor, que no me envie nada."
+
+#: templates/galcon/register.html:62
+msgid ""
+"If you are a Steam customer, you must start the Steam Application > click\n"
+"                    Library > right-click on 'Galcon Fusion' > click on "
+"'Manage Game Account...' to receive your\n"
+"                    registration code if it is not filled in below."
+msgstr ""
+"Si usted es un cliente de Steam, tiene que empezar la aplicaciòn Steam,"
+"hacer clic en 'Galcon Fusion', y hacer clic en 'Manage Game Account...'"
+"para conseguir su còdigo de registro si no sea aqui."
+
+#: templates/galcon/register.html:67
+msgid ""
+"Registration is required to play Galcon on the desktop, unless you purchased "
+"it from the Mac App Store.\n"
+"                    <b>(You do not need registration info to be included in "
+"the iPhone ranks.)</b>"
+msgstr ""
+"Tiene que hacer registro antes de que puede jugar Galcon de escritorio, a"
+" menos que lo comprara en la tienda de Mac apps.\n"
+"                    <b>(No necesita la información de registro para incluirse"
+" en los 'ranks de iPhone'. (jaja, TODO))</b>"
+
+#: templates/galcon/register.html:84
+msgid ""
+"To get an account, have your guardian\n"
+"                <a href=\"/support/contact/\">Contact Us</a> for a "
+"permission\n"
+"                form to have an account created for you."
+msgstr ""
+"Para conseguir una cuenta, su tutor debe"
+"<a href=\"/support/contact/\">contactar con nosotros</a> para una forma"
+"..."

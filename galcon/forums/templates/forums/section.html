@@ -1,0 +1,30 @@
+{% extends "forums/forum.html" %}
+{% load static %}
+{% load forums_util %}
+
+{% load i18n %}
+
+{% block before_table %}
+    <div>
+        <a href="{{request.path}}recent_posts/">{% trans "Recent Posts" %}</a>
+    </div>
+{% endblock %}
+
+{% block child_block %}   
+    <tr class="children">
+        <td>
+            {% child_link %}
+            <br/>
+            {{child.description}}
+        </td>
+        <td>
+            {{child.children.count}}
+        </td>
+        <td>
+            {{post_count}}
+        </td>
+        <td>
+            {% latest_post_info "subsection" %}
+        </td>
+    </tr>
+{% endblock %}

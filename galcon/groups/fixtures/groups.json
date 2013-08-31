@@ -1,0 +1,71 @@
+[
+    {"pk": 1,
+     "model": "groups.group",
+     "fields": {
+             "description": "The very first group. These accounts were used to test groups.",
+             "creation_time": "2013-07-28T04:54:39Z",
+             "join_requires_approval": true,
+             "hidden": false,
+             "slug": "testers",
+             "name": "Testers"
+             }
+     },
+    
+    {"pk": 2,
+     "model": "groups.group",
+     "fields": {
+         "description": "This is the official page of the GBC, or the Galcon Book Club. Feel free to try our delicious scones.",
+         "creation_time": "2013-07-28T23:57:30Z",
+         "join_requires_approval": false,
+         "hidden": false,
+         "slug": "galcon_book_club",
+         "name": "Galcon Book Club"
+         }
+     },
+    {
+      "pk": 1, 
+      "model": "groups.membership", 
+      "fields": {
+        "player": 1, 
+        "group": 1, 
+        "adminship": "owner"
+      }
+    },
+    {
+      "pk": 2, 
+      "model": "groups.membership", 
+      "fields": {
+        "player": 2, 
+        "group": 1, 
+        "adminship": "admin"
+      }
+    },
+    {
+      "pk": 3, 
+      "model": "groups.membership", 
+      "fields": {
+        "player": 3, 
+        "group": 1, 
+        "adminship": "none"
+      }
+    },
+    {
+      "pk": 4, 
+      "model": "groups.membership", 
+      "fields": {
+        "player": 1, 
+        "group": 2, 
+        "adminship": "owner"
+      }
+    },
+    {
+      "pk": 5, 
+      "model": "groups.membership", 
+      "fields": {
+        "player": 3, 
+        "group": 2, 
+        "adminship": "none"
+      }
+    }
+]
+

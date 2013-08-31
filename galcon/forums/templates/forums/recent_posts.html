@@ -1,0 +1,22 @@
+{% extends "forums/forum.html" %}
+{% load static %}
+{% load forums_util %}
+
+{% load i18n %}
+
+{% block child_block %}   
+    <tr class="children">
+        <td class="centered">
+            {{child.parent.title}}
+        </td>
+        <td class="left_aligned">
+            {% child_link %}
+        </td>
+        <td>
+            {{child.children.all.count}}
+        </td>
+        <td>
+            {% latest_post_info "thread" %}
+        </td>
+    </tr>
+{% endblock %}

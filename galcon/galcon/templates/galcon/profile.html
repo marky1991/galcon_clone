@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% load static %}
+{% load galcon_util %}
+
+
+{% load i18n %}
+
+{% block title %}{{username}}{% endblock %}
+
+{% block content %}
+{% if player_exists %}
+    <div class="clearfix" style="margin-left: auto; margin-right: auto;">
+        <h1>{% trans "Profile" %} :: {{username}}</h1>
+        <span>
+            <a href="/users/{{user.username}}/">{% trans "Your Profile" %}</a> |
+            <a href="/users/{{user.username}}/edit/">{% trans "Edit Profile" %}</a> |
+            <a href="/news/">{% trans "Newsletter" %}</a> |
+            <a href="/users/{{user.username}}/uploads/">{% trans "Uploads" %}</a>
+        </span>
+        <span>
+            <form id="find_friend" class="inline" method="post">
+                {% csrf_token %}
+                <label for="friend_name">{% trans "Find a friend" %}:</label>
+                <input id="friend_name" name="friend_name" type="text"/>
+                <input type="submit" value="{% trans "Go!" %}"/>
+            </form>
+        </span>
+        <br/>
+        <a href="/users/{{username}}/friends/">{% blocktrans %}See {{username}}'s friends{% endblocktrans %}</a>
+
+        <br/>
+
+        {% with user_author=user player_author=user.player %}
+            <span class="profile">
+                {% include "profile_tag.html" %}
+                <span class="rank_row">
+                    <img src="{{STATIC_URL}}flags/{{player_author.rank.classic_rank}}.gif"/>
+                    <span>
+                        {% trans "Classic Galcon" %}
+                    </span>
+                </span>
+                <span class="rank_row">
+                    <img src="{{STATIC_URL}}flags/{{player_author.rank.iphone_rank}}.gif"/>
+                    <span>
+                        {% trans "iPhone Galcon" %}
+                    </span>
+                </span>
+                <span class="rank_row">
+                    <img src="{{STATIC_URL}}flags/{{player_author.rank.flash_rank}}.gif"/>
+                    <span>
+                        {% trans "Flash Galcon" %}
+                    </span>
+                </span>
+                <span class="rank_row">
+                    <img src="{{STATIC_URL}}flags/{{player_author.rank.fusion_rank}}.gif"/>
+                    <span>
+                        {% trans "Galcon Fusion" %}
+                    </span>
+                </span>
+            </span>
+        {% endwith %}
+        <ul class="trophy_list">
+            {% for trophy in trophies %}
+                <li class="trophy">
+                   <img class="trophy_image" src='{{MEDIA_URL}}{{trophy.image}}'/>
+                    <br/>
+                    {{trophy.text}}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <br/>
+    
+{% else %}
+    <h1>{% trans "Player doesn't exist!" %}</h1>
+{% endif %}
+{% endblock %}

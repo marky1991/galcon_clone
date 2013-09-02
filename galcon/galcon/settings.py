@@ -1,8 +1,16 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+
+
 # Django settings for galcon project.
 import os, sys
 from django.conf import global_settings
 
-TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + ("django.contrib.messages.context_processors.messages",)
+extra_context_processors = (
+    "django.contrib.messages.context_processors.messages",
+    "galcon.context_processors.banner_context_processor")
+TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + extra_context_processors
 
 
 DEBUG = True

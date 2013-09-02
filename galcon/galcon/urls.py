@@ -35,7 +35,6 @@ urlpatterns = patterns(
     (r"^users/(\w+)/friends/$", views.friends),
     (r"^users/(\w+)/edit/$", views.edit_profile),
     (r"^users/(?P<username>\w+)/highest_flag/", views.highest_flag),
-    (r"^users/(\w+)/edit/newsletter_prefs/$", views.modify_newsletter_prefs),
     (r"^users/(?P<username>\w+)/groups/$", group_views.groups),
     
     ("^forums/", include("forums.urls")),

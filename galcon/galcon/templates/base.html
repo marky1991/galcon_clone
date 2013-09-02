@@ -11,18 +11,67 @@
         <link rel="stylesheet" href="{{ STATIC_URL }}style.css" type="text/css" />
         <title>{% block title %}Galcon{% endblock %}</title>
         <link rel="icon" type="image/png" href="/site/favicon.ico">
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
         {% if "timezone" not in request.session or True %}
             <script>
                 var date = new Date();
                 document.cookie ="offset=" + date.getTimezoneOffset().toString() + ";";
             </script>
         {% endif %}
+        <script>
+            function set_cookie(name, value, days) {
+                if (days) {
+                    var date = new Date();
+                    date.setTime(date.getTime()+(days*24*60*60*1000));
+                    var expires = "; expires="+date.toGMTString();
+                }
+                else {
+                    var expires = "";
+                }
+                document.cookie = name+"="+value+expires+"; path=/";
+            }
+
+            function read_cookie(name) {
+                name = name + "=";
+                var ca = document.cookie.split(';');
+                for (var i=0; i < ca.length; i = i + 1) {
+                    var c = ca[i];
+                    while (c.charAt(0)==' ') {
+                        c = c.substring(1,c.length);
+                    }
+                    if (c.indexOf(name) == 0) {
+                        return c.substring(name.length,c.length);
+                    }
+                    
+                }
+                return null;
+            }
+
+            function toggle_banner() {
+                var show_banner = read_cookie("show_banner");
+                if (show_banner === null) {
+                    set_cookie("show_banner", "false", 365*20);
+                    show_banner = false;
+                }
+                else {
+                    set_cookie("show_banner", show_banner !== "true", 365*20);
+                    show_banner = show_banner !== "true";
+                }
+                if (show_banner) {
+                    var display = "block";
+                }
+                else {
+                    var display = "none";
+                }
+                $("#banner").children("a").first().css("display", display);
+            }
+        </script>
 
         {% block extra_head %}{% endblock %}
     </head>
     <body>
         {% block header %}
-            <span class="top_header">
+            <span class="top_header clearfix">
                 <span class="top_button">
                     <a href="/">{% trans "Home" %}</a>
                 </span>
@@ -65,9 +114,14 @@
                     
                 </span>
             </span>
-            <a href='http://www.kickstarter.com/projects/philhassey/galcon-2-galactic-conquest' target='_blank' >
-                <img class="banner" src='{% static "ks_finale.jpg" %}' border=0 />
-            </a>
+            <div id="banner">
+                <a href='http://www.kickstarter.com/projects/philhassey/galcon-2-galactic-conquest' target='_blank' style="{% if show_banner == "false" %}display: none{% endif %}" >
+                    <img class="banner" src='{% static "ks_finale.jpg" %}' border=0 />
+                </a>
+                <button style="position: absolute; top: 0; right: 0;" onclick="toggle_banner()">
+                    X
+                </button>
+            </div>
         {% endblock %}
         {% block after_header %}{% endblock %}
         <div class="main">

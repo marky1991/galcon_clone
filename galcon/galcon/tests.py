@@ -159,7 +159,7 @@ class Test_Profile(TestCase):
         response = self.client.post("/users/",
                                     {"friend_name": "example_us"})
         self.assertTemplateUsed("profile_matches.html")
-        self.assertFalse(True)
+        self.assertRedirects(response, "/users/example_user/")
     def test_unsuccessful_find_friend(self):
         response = self.client.post("/users/example_user/",
                                     {"friend_name": "moo"})
@@ -202,7 +202,8 @@ class Test_Edit_Profile(TestCase):
                                      "location": "Cooltown",
                                      "avatar": avatar,
                                      "email": "example_user@gmail.com",
-                                     "registration_code": "Teehee"})
+                                     "registration_code": "Teehee",
+                                     "get_newsletter": "False"})
         self.assertFalse(len(response.context["form"].errors))
         user = User.objects.get(username="example_user")
         player = user.player
@@ -212,6 +213,7 @@ class Test_Edit_Profile(TestCase):
         self.assertTrue(player.avatar != None)
         self.assertTrue(user.email == "example_user@gmail.com")
         self.assertTrue(player.registration_code == "Teehee")
+        self.assertFalse(player.get_newsletter)
         avatar.close()
         
     @expectedFailure

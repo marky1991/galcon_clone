@@ -48,6 +48,22 @@
             <label for="location">{% trans "Location" %}</label>
             <input type="text" name="location" id="location" value="{{form.data.location}}"/>
 
+            <br/>
+
+            {{form.get_newsletter|render_errors}}
+            <label for="newsletter">{% trans "Newsletter" %}</label>
+            {% if form.data.get_newsletter == True %}
+                <input type="radio" name="get_newsletter" id="get_newsletter_yes" value="True" checked/>
+                <label class="inline" for="get_newsletter_yes">{% trans "Subscribe" %}</label>
+                <input type="radio" name="get_newsletter" id="get_newsletter_no" value="False"/>
+                <label class="inline" for="get_newsletter_no">{% trans "Unsubscribe" %}</label>
+            {% else %}
+                <input type="radio" name="get_newsletter" id="get_newsletter_yes" value="True"/>
+                <label class="inline" for="get_newsletter_yes">{% trans "Subscribe" %}</label>
+                <input type="radio" name="get_newsletter" id="get_newsletter_no" value="False" checked/>
+                <label class="inline" for="get_newsletter_no">{% trans "Unsubscribe" %}</label>
+            {% endif %}
+
             <hr/>
 
             <h3>{% trans "Desktop Registration Info (optional)" %}</h3>

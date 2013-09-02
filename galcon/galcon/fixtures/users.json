@@ -46,6 +46,7 @@
         "location" : "",
         "post_count" : 0,
         "rank" : 1,
+        "get_newsletter": true,
         "registration_code" : "",
         "registration_email" : "",
         "slug" : "example_user",

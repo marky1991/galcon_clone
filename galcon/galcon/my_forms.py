@@ -25,6 +25,9 @@ class Edit_Profile_Form(Player_Form):
     password2 = forms.CharField(max_length=settings.max_password_length, required=False)
     location = forms.CharField(max_length=settings.max_location_length, required=False)
     avatar = forms.ImageField(required=False)
+    #Really, this is required, but due to the way validation works,
+    #you have to say it's not required if you want to allow "False"
+    get_newsletter = forms.BooleanField(required=False)
 
     def clean(self):
         cleaned_data = self.cleaned_data

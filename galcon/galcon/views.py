@@ -113,12 +113,7 @@ def friends(request, username):
         player = user.player
         friends = player.friends.all()
         return render(request, "galcon/friends.html", locals())
-    """else:
-        if "friend_name" in request.POST:
-            #This didn't use to have '+ "/friends/"
-            return HttpResponseRedirect("/users/" + request.POST["friend_name"] + "/friends/")
-        else:
-            raise NotImplementedError("This is supposed to pop out an error message saying 'please give a name'.")"""
+    
 @login_required
 def edit_profile(request, username):
     """This view is responsible for showing the page used to edit a player's profile."""
@@ -136,12 +131,14 @@ def edit_profile(request, username):
             data = request.POST.dict()
             data.update({"username": username})
             form = my_forms.Edit_Profile_Form(data, request.FILES)
+            print(form.data, "DATA")
             if form.is_valid():
                 if form.data["password1"] == form.data["password2"] and form.data["password1"] != "":
                     player.user.set_password(form.data["password1"])
                 #The email is a required field, so no validation is needed
                 player.user.email = form.data["email"]
                 player.location = form.data.get("location", "")
+                player.get_newsletter = form.data["get_newsletter"] == "True"
                 if "avatar" in request.FILES:
                     player.avatar = request.FILES.get("avatar", "")
                 player.registration_email = form.data.get("registration_email", "")
@@ -154,12 +151,6 @@ def edit_profile(request, username):
     else:
         return HttpResponseRedirect("/users/" + username + "/")
 
-
-def modify_newsletter_prefs(request, username):
-    return render(request, "galcon/modify_newsletter_prefs.html")
-
-def handle_request(request, group_name=None):
-    return False
 
 def highest_flag(request, username):
     player = Player.objects.get(user__username=username)

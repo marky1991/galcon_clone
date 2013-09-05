@@ -9,7 +9,7 @@ from django.templatetags.static import static
 from datetime import timedelta
 from django.utils.safestring import mark_safe
 
-from galcon.settings import STATIC_URL
+from ..settings import STATIC_URL
 
 from django.contrib.humanize.templatetags import humanize
 

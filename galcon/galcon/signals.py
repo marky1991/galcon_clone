@@ -1,6 +1,5 @@
 from .models import Player, User
 from django.db.models import signals
-import galcon
 
 def create_user_profile(sender, instance, created, **kwargs):
     if created:

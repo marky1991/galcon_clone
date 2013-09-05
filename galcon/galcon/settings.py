@@ -185,8 +185,11 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     # Uncomment the next line to enable the admin:
      'django.contrib.admin',
+    "django.contrib.comments",
     'south',
-    "genericm2m"
+    "genericm2m",
+
+    
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )

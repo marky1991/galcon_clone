@@ -41,6 +41,7 @@ urlpatterns = patterns(
     ("^groups/", include("groups.urls")),
     ("^chat/", include("chat.urls")),
     ("^messages/", include("messaging.urls")),
+    
 )
 
 if settings.DEBUG:

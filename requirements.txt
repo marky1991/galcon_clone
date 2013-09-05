@@ -9,7 +9,7 @@ distribute==0.6.28dev-r0
 django-braces==1.2.2
 -e git+https://github.com/marky1991/django-generic-m2m.git@c9db92ff32ddd98ec0ff01027d4b9ca808e5b5a0#egg=django_generic_m2m-dev
 fuzzywuzzy==0.2
-gevent==1.0dev
+-e git+git://githttps://github.com/fantix/gevent.git
 html5lib==1.0b2
 lxml==3.2.1
 simplejson==3.3.0

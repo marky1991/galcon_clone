@@ -2,11 +2,10 @@ from django.db import models
 from . import settings
 from django.contrib.auth.models import User
 from django.contrib.contenttypes import generic
+from django.forms import ValidationError
 
 from .util import cached_property
 from .templatetags import galcon_util as util
-
-from django.forms import ValidationError
 
 from genericm2m.models import RelatedObjectsDescriptor
 
@@ -111,3 +110,6 @@ class Player(My_Model):
         rank.save()
         self.rank = rank
         models.Model.save(self, *args, **kwargs)
+
+from . import signals
+

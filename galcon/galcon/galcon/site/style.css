@@ -160,6 +160,12 @@ body, p, form, td, th, div, span, ol, ul, li, a, h1, h2, h3, h4, h5 {
     font-family: 'Lucida Grande', Verdana, Arial, Sans-Serif;
 }
 
+.footer {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    text-align: center;
+}
 h2 a {
     font-weight: normal;
 }

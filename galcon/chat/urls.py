@@ -14,9 +14,9 @@ urlpatterns = patterns(
     
     ("^$", views.join),
     ("^join/", views.join),
-    ("^(?P<room_slug>\w+)/join/$", views.join),
+    ("^(?P<room_slug>[\w\.]+)/join/$", views.join),
     ("^leave/$", views.leave),
     ("^post/$", views.post),
     ("^poll/$", views.poll),
-    ("^(?P<room_slug>\w+)/", views.main),
+    ("^(?P<room_slug>[\w\.]+)/", views.main),
 )

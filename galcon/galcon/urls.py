@@ -31,16 +31,19 @@ urlpatterns = patterns(
     ("^login/", views.login),
     ("^logout/$", views.logout),
     ("^register/", views.register),
-    (r"^users/(\w+)/$", views.profile),
-    (r"^users/(\w+)/friends/$", views.friends),
-    (r"^users/(\w+)/edit/$", views.edit_profile),
-    (r"^users/(?P<username>\w+)/highest_flag/", views.highest_flag),
-    (r"^users/(?P<username>\w+)/groups/$", group_views.groups),
+    ("^users/([\w\.]+)/$", views.profile),
+    ("^users/([\w\.]+)/friends/$", views.friends),
+    ("^users/([\w\.]+)/edit/$", views.edit_profile),
+    ("^users/(?P<username>[\w\.]+)/highest_flag/", views.highest_flag),
+    ("^users/(?P<username>[\w\.]+)/groups/$", group_views.groups),
     
     ("^forums/", include("forums.urls")),
     ("^groups/", include("groups.urls")),
     ("^chat/", include("chat.urls")),
     ("^messages/", include("messaging.urls")),
+
+    url(r'^weblog/', include('zinnia.urls')),
+url(r'^comments/', include('django.contrib.comments.urls')),
     
 )
 

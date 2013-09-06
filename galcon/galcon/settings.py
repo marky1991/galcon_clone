@@ -9,6 +9,8 @@ from django.conf import global_settings
 
 extra_context_processors = (
     "django.contrib.messages.context_processors.messages",
+    "django.core.context_processors.request",
+
     "galcon.context_processors.banner_context_processor")
 TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + extra_context_processors
 
@@ -189,6 +191,9 @@ INSTALLED_APPS = (
     'south',
     "genericm2m",
 
+      'tagging',
+  'mptt',
+  'zinnia',
     
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',

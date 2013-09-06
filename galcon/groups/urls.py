@@ -10,11 +10,11 @@ urlpatterns = patterns(
     #here)
     ("^(?P<sorting_function>\w+)/(?P<page_number>\d+)/", views.groups),
     ("^(?P<sorting_function>(newest|oldest|biggest|smallest))/$", views.groups),
-    (r"^(?P<group_name>\w+)/$", views.group),
-    (r"^(?P<group_name>\w+)/(?P<kind>requests)/$", views.requests),
-    (r"^(?P<group_name>\w+)/(?P<kind>blocks)/$", views.requests),
-    (r"^(?P<group_name>\w+)/(?P<action>edit)/$", views.modify_group),
-    (r"^(?P<group_name>\w+)/(?P<action>join)/$", views.change_membership),
-    (r"^(?P<group_name>\w+)/(?P<action>leave)/$", views.change_membership),
-    (r"^(?P<group_name>\w+)/admins/$", views.change_adminship)
+    ("^(?P<group_name>[\w\.]+)/$", views.group),
+    ("^(?P<group_name>[\w\.]+)/(?P<kind>requests)/$", views.requests),
+    ("^(?P<group_name>[\w\.]+)/(?P<kind>blocks)/$", views.requests),
+    ("^(?P<group_name>[\w\.]+)/(?P<action>edit)/$", views.modify_group),
+    ("^(?P<group_name>[\w\.]+)/(?P<action>join)/$", views.change_membership),
+    ("^(?P<group_name>[\w\.]+)/(?P<action>leave)/$", views.change_membership),
+    ("^(?P<group_name>[\w\.]+)/admins/$", views.change_adminship)
 )
